@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaCall-Api", "PassaCall-Api\PassaCall-Api.csproj", "{21DB3064-4665-48BC-890F-27154DA320A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21DB3064-4665-48BC-890F-27154DA320A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21DB3064-4665-48BC-890F-27154DA320A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21DB3064-4665-48BC-890F-27154DA320A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21DB3064-4665-48BC-890F-27154DA320A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A0329C6-2ABB-4A89-A6FA-0187522E7325}
+	EndGlobalSection
+EndGlobal
