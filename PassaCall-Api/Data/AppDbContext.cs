@@ -12,6 +12,8 @@ namespace PassaCall_Api.Data
         }
 
         public DbSet<TeamModel> Team { get; set; }
+        public DbSet<EventModel> Event { get; set; }
+        public DbSet<MapModel> Map { get; set; }
 
     }
 }
