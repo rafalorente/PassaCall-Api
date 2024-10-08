@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PassaCall_Api.Data;
+using PassaCall_Api.Dto.Event;
 using PassaCall_Api.Models;
 
 namespace PassaCall_Api.Services.Event
@@ -12,7 +13,6 @@ namespace PassaCall_Api.Services.Event
         {
             _context = context;
         }
-
         public async Task<ResponseModel<List<EventModel>>> GetEvent()
         {
             ResponseModel<List<EventModel>> response = new ResponseModel<List<EventModel>>();
@@ -32,10 +32,61 @@ namespace PassaCall_Api.Services.Event
                 return response;
             }
         }
-
-        public Task<ResponseModel<EventModel>> GetEventById(int idEvent)
+        public async Task<ResponseModel<EventModel>> GetEventById(int idEvent)
         {
-            throw new NotImplementedException();
+            ResponseModel<EventModel> response = new ResponseModel<EventModel>();
+
+            try
+            {
+                var events = await _context.Event.FirstOrDefaultAsync(eventDatabase => eventDatabase.IdEvent == idEvent);
+
+                if (events == null)
+                {
+                    response.Message = "Nenhum evento localizado! ";
+                }
+
+                response.Data = events;
+                response.Message = "Evento Localizado!";
+
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Stats = false;
+                return response;
+            }        
+        }
+        public async Task<ResponseModel<List<EventModel>>> CreateEvent(EventCreateDto eventCreateDto)
+        {
+            ResponseModel<List<EventModel>> response = new ResponseModel<List<EventModel>>();
+
+            try
+            {
+
+                var events = new EventModel()
+                {
+                    NameEvent = eventCreateDto.NameEvent,
+                    InitialDate = eventCreateDto.InitialDate,
+                    FinalDate = eventCreateDto.FinalDate,
+                };
+
+                _context.Add(events);
+                await _context.SaveChangesAsync();
+
+                response.Data = await _context.Event.ToListAsync();
+                response.Message = "Evento criado com sucesso!";
+
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Stats = false;
+                return response;
+            }
         }
     }
 }
