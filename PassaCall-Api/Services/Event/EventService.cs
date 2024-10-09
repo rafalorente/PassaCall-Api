@@ -56,7 +56,7 @@ namespace PassaCall_Api.Services.Event
                 response.Message = ex.Message;
                 response.Stats = false;
                 return response;
-            }        
+            }
         }
         public async Task<ResponseModel<List<EventModel>>> CreateEvent(EventCreateDto eventCreateDto)
         {
@@ -77,6 +77,72 @@ namespace PassaCall_Api.Services.Event
 
                 response.Data = await _context.Event.ToListAsync();
                 response.Message = "Evento criado com sucesso!";
+
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Stats = false;
+                return response;
+            }
+        }
+        public async Task<ResponseModel<List<EventModel>>> UpdateEvent(EventUpdateDto eventUpdateDto)
+        {
+            ResponseModel<List<EventModel>> response = new ResponseModel<List<EventModel>>();
+
+            try
+            {
+
+                var events = await _context.Event.FirstOrDefaultAsync(eventBanco => eventBanco.IdEvent == eventUpdateDto.IdEvent);
+
+                if (events == null)
+                {
+                    response.Message = "Nenhum Evento Localizado";
+                    return response;
+                }
+
+                events.NameEvent = eventUpdateDto.NameEvent;
+                events.FinalDate = Convert.ToDateTime(eventUpdateDto.FinalDate);
+                events.InitialDate = Convert.ToDateTime(eventUpdateDto.InitialDate);
+
+                _context.Update(events);
+                await _context.SaveChangesAsync();
+
+                response.Data = await _context.Event.ToListAsync();
+                response.Message = "Dados Editados com sucesso!";
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Stats = false;
+                return response;
+            }
+
+        }
+        public async Task<ResponseModel<List<EventModel>>> DeleteEvent(int idEvent)
+        {
+            ResponseModel<List<EventModel>> response = new ResponseModel<List<EventModel>>();
+
+            try
+            {
+                var events = await _context.Event.FirstOrDefaultAsync(eventBanco => eventBanco.IdEvent == idEvent);
+
+                if (events == null)
+                {
+                    response.Message = "Nenhum Evento Localizado";
+                    return response;
+                }
+
+                _context.Remove(events);
+                await _context.SaveChangesAsync();
+
+                response.Data = await _context.Event.ToListAsync();
+
+                response.Message = "Evento Removido com sucesso!";
 
                 return response;
 

@@ -33,10 +33,27 @@ namespace PassaCall_Api.Controllers
         }
 
         [HttpPost("CriarEvento")]
-        public async Task<ActionResult<ResponseModel<EventModel>>> CreateEvent(EventCreateDto eventCreateDto)
+        public async Task<ActionResult<ResponseModel<List<EventModel>>>> CreateEvent(EventCreateDto eventCreateDto)
         {
            var events = await _eventInterface.CreateEvent(eventCreateDto);
             return Ok(events);
         }
+
+        [HttpPut("EditarEvento")]
+        public async Task<ActionResult<ResponseModel<List<EventModel>>>> UpdateEvent(EventUpdateDto eventUpdateDto)
+        {
+            var events = await _eventInterface.UpdateEvent(eventUpdateDto);
+
+            return Ok(events);
+        }
+
+        [HttpDelete("RemoverEvento")]
+        public async Task<ActionResult<ResponseModel<List<EventModel>>>> DeleteEvent(int idEvent)
+        {
+            var events = await _eventInterface.DeleteEvent(idEvent);
+
+            return Ok(events);
+        }
+
     }
 }
