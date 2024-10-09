@@ -95,7 +95,7 @@ namespace PassaCall_Api.Services.Event
             try
             {
 
-                var events = await _context.Event.FirstOrDefaultAsync(eventBanco => eventBanco.IdEvent == eventUpdateDto.IdEvent);
+                var events = await _context.Event.FirstOrDefaultAsync(eventDatabase => eventDatabase.IdEvent == eventUpdateDto.IdEvent);
 
                 if (events == null)
                 {
@@ -129,7 +129,7 @@ namespace PassaCall_Api.Services.Event
 
             try
             {
-                var events = await _context.Event.FirstOrDefaultAsync(eventBanco => eventBanco.IdEvent == idEvent);
+                var events = await _context.Event.FirstOrDefaultAsync(eventDatabase => eventDatabase.IdEvent == idEvent);
 
                 if (events == null)
                 {

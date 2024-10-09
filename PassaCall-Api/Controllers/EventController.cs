@@ -17,7 +17,7 @@ namespace PassaCall_Api.Controllers
             _eventInterface = eventInterface;
         }
 
-        //Criando endpoint de listar eventos
+        
         [HttpGet("ListarEventos")]
         public async Task<ActionResult<ResponseModel<List<EventModel>>>> GetEvent()
         {

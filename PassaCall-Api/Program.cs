@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PassaCall_Api.Data;
 using PassaCall_Api.Services.Event;
+using PassaCall_Api.Services.Map;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IEventInterface,EventService>();
+builder.Services.AddScoped<IMapInterface,MapService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

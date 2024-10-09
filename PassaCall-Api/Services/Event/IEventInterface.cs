@@ -10,7 +10,5 @@ namespace PassaCall_Api.Services.Event
         Task<ResponseModel<List<EventModel>>> CreateEvent(EventCreateDto eventCreateDto);
         Task<ResponseModel<List<EventModel>>> UpdateEvent(EventUpdateDto eventUpdateDto);
         Task<ResponseModel<List<EventModel>>> DeleteEvent(int idEvent);
-
-
     }
 }
