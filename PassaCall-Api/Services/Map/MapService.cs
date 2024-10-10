@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PassaCall_Api.Data;
-using PassaCall_Api.Dto.Event;
 using PassaCall_Api.Dto.Map;
 using PassaCall_Api.Models;
 

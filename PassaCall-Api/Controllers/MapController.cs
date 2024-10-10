@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PassaCall_Api.Dto.Event;
 using PassaCall_Api.Dto.Map;
 using PassaCall_Api.Models;
-using PassaCall_Api.Services.Event;
 using PassaCall_Api.Services.Map;
 
 namespace PassaCall_Api.Controllers
