@@ -34,7 +34,6 @@ namespace PassaCall_Api.Services.Team
             }
         }
 
-        //Entender retorno list e task.
         public async Task<ResponseModel<TeamModel>> GetTeamById(int idTeam)
         {
             ResponseModel<TeamModel> response = new ResponseModel<TeamModel>();
