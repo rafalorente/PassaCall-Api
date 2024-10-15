@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PassaCall_Api.Data;
 using PassaCall_Api.Services.Event;
 using PassaCall_Api.Services.Map;
+using PassaCall_Api.Services.MatchHistory;
 using PassaCall_Api.Services.Team;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEventInterface,EventService>();
 builder.Services.AddScoped<IMapInterface,MapService>();
 builder.Services.AddScoped<ITeamService,TeamService>();
+builder.Services.AddScoped<IMatchHistoryInterface,MatchHistoryService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
